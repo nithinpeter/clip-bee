@@ -1,0 +1,28 @@
+{
+  "name": "copy-paste-plus-electron-app",
+  "version": "0.1.0",
+  "description": "Copy Paste Plus Electron App",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "lint": "tslint -c tslint.json -p tsconfig.json",
+    "dev": "npm run watch > /dev/null | electron ./dist/main.js"
+  },
+  "repository": "https://github.com/nithiinpeter/copy-paste-plus",
+  "author": {
+    "name": "nithinpeter"
+  },
+  "keywords": [
+    "Electron"
+  ],
+  "dependencies": {
+    "@hapi/hapi": "^18.4.0",
+    "clipboardy": "^2.1.0"
+  },
+  "devDependencies": {
+    "@types/hapi__hapi": "^18.2.5",
+    "electron": "^6.0.8",
+    "tslint": "^5.19.0",
+    "typescript": "^3.6.4"
+  }
+}

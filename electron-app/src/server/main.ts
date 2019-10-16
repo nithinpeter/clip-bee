@@ -1,23 +1,24 @@
 import * as clipbard from 'clipboardy';
 import { Server as HapiServer } from '@hapi/hapi';
-
-const INTERVAL = 500;
-const PORT = 4444;
-const MAX_ITEMS = 100;
+import {
+  CLIPBOARD_POLL_INTERVAL,
+  SERVER_PORT,
+  CLIPBOARD_MAX_ITEMS,
+} from '../constants';
 
 class Clipboard {
-  private items = [];
-  private clearIntervalId: NodeJS.Timeout;
+  private items: String[] = [];
+  private clearIntervalId?: NodeJS.Timeout;
 
-  constructor(private interval = INTERVAL) {}
+  constructor(private interval = CLIPBOARD_POLL_INTERVAL) {}
 
   getItems = () => {
     return this.items;
   };
 
-  setItems = (item: any) => {
+  setItems = (item: string) => {
     this.items.push(item);
-    if (this.items.length > MAX_ITEMS) {
+    if (this.items.length > CLIPBOARD_MAX_ITEMS) {
       this.items.pop();
     }
   };
@@ -33,7 +34,7 @@ class Clipboard {
   };
 
   stopListener = () => {
-    clearInterval(this.clearIntervalId);
+    clearInterval(this.clearIntervalId!);
   };
 }
 
@@ -49,7 +50,7 @@ class Server {
 
   createServer = () => {
     return new HapiServer({
-      port: PORT,
+      port: SERVER_PORT,
       host: 'localhost',
     });
   };
@@ -64,22 +65,20 @@ class Server {
     });
   };
 
-  start = () => {
+  start = async () => {
     this.clipboard.startListener();
     this.registerRoutes();
-    this.server.start();
+    await this.server.start();
   };
 
-  stop = () => {
+  stop = async () => {
     this.clipboard.stopListener();
-    this.server.start();
+    await this.server.stop();
   };
 }
 
-const init = () => {
+export const init = async () => {
   const clipboard = new Clipboard();
   const server = new Server(clipboard);
-  server.start();
+  await server.start();
 };
-
-init();
