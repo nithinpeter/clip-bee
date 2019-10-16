@@ -1,0 +1,43 @@
+{
+	"name": "copy-paste-plus",
+	"displayName": "Copy Paste Plus",
+	"description": "Clipboard/Copy-Paste History",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.39.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:extension.showClipboard"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "extension.showClipboard",
+				"title": "Show clipboard"
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "yarn run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"pretest": "yarn run compile"
+	},
+	"devDependencies": {
+		"@types/glob": "^7.1.1",
+		"@types/node": "^10.12.21",
+		"@types/node-fetch": "^2.5.2",
+		"@types/vscode": "^1.39.0",
+		"glob": "^7.1.4",
+		"tslint": "^5.12.1",
+		"typescript": "^3.3.1",
+		"vscode-test": "^1.2.0"
+	},
+	"dependencies": {
+		"node-fetch": "^2.6.0"
+	}
+}
