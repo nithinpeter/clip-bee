@@ -34,6 +34,7 @@ class Clipboard {
   };
 
   stopListener = () => {
+    this.items = [];
     clearInterval(this.clearIntervalId!);
   };
 }
@@ -77,8 +78,15 @@ class Server {
   };
 }
 
-export const init = async () => {
+let server: Server;
+export const start = async () => {
   const clipboard = new Clipboard();
-  const server = new Server(clipboard);
+  server = new Server(clipboard);
   await server.start();
+};
+
+export const stop = async () => {
+  if (server) {
+    await server.stop();
+  }
 };
