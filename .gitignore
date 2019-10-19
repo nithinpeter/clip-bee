@@ -1,3 +1,5 @@
 node_modules
 vs-code-extension/out
 electron-app/dist
+.cache
+*.tgz

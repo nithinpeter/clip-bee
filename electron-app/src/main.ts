@@ -1,8 +1,14 @@
 import * as path from 'path';
 import { app, shell, Menu, Tray, nativeImage } from 'electron';
 
-import { start as serverStart, stop as serverStop } from './server/main';
-import { SERVER_PORT } from './constants';
+import { start as serverStart, stop as serverStop } from './app/api/main';
+import { SERVER_HOST, SERVER_PORT } from './constants';
+
+app.on('activate', () => {
+  if (process.platform === 'darwin') {
+    app.dock.hide();
+  }
+});
 
 app.on('ready', async () => {
   const image = nativeImage.createFromPath(
@@ -12,14 +18,11 @@ app.on('ready', async () => {
   const tray = new Tray(image);
 
   // Call this again for Linux because we modified the context menu
-
   setContextMenu(tray);
   tray.setToolTip('Clip Bee');
 
-  // start the app if openAtLogin === true
-  if (getOpenAtLogin()) {
-    serverStart();
-  }
+  // Start the server
+  serverStart();
 });
 
 if (process.platform === 'darwin') {
@@ -56,7 +59,7 @@ const getContextMenu = () => {
 
     {
       label: 'View clipboard history',
-      click: () => shell.openExternal('http://localhost:' + SERVER_PORT),
+      click: () => shell.openExternal(`http://${SERVER_HOST}:${SERVER_PORT}`),
     },
 
     { type: 'separator' },
@@ -64,8 +67,8 @@ const getContextMenu = () => {
     {
       label: 'Quit',
       click: async () => {
-        app.quit();
         await serverStop();
+        app.quit();
       },
     },
   ]);

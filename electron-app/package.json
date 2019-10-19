@@ -1,27 +1,56 @@
 {
-  "name": "copy-paste-plus-electron-app",
+  "name": "clip-bee",
   "version": "0.1.0",
   "description": "Copy Paste Plus Electron App",
   "scripts": {
-    "build": "tsc",
-    "watch": "tsc -w",
-    "lint": "tslint -c tslint.json -p tsconfig.json",
-    "dev": "electron ./dist/main.js"
+    "build:electron": "tsc",
+    "build:ui": "parcel build ./src/app/ui/index.html --out-dir ./dist/app/ui",
+    "build": "yarn build:electron && yarn build:ui",
+    "watch:electron": "tsc -w",
+    "watch:ui": "parcel watch ./src/app/ui/index.html --out-dir ./dist/app/ui",
+    "start": "electron ./dist/main.js",
+    "pack": "electron-builder --dir --mac dmg",
+    "dist": "electron-builder --mac dmg",
+    "postinstall": "electron-builder install-app-deps"
   },
   "repository": "https://github.com/nithiinpeter/copy-paste-plus",
   "author": {
     "name": "nithinpeter"
   },
   "keywords": [
-    "Electron"
+    "Clipboard history"
   ],
+  "main": "./dist/main.js",
+  "files": [
+    "./dist/**/*"
+  ],
+  "productName": "Clip Bee",
+  "build": {
+    "appId": "com.vespadevworks.clipbee",
+    "files": [
+      "./dist/**/*"
+    ],
+    "mac": {
+      "category": "utility  "
+    }
+  },
   "dependencies": {
     "@hapi/hapi": "^18.4.0",
-    "clipboardy": "^2.1.0"
+    "@hapi/inert": "^5.2.2",
+    "babel-polyfill": "^6.26.0",
+    "clipboardy": "^2.1.0",
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2"
   },
   "devDependencies": {
     "@types/hapi__hapi": "^18.2.5",
+    "@types/hapi__inert": "^5.2.0",
+    "@types/react": "^16.9.9",
+    "@types/react-dom": "^16.9.2",
     "electron": "^6.0.8",
+    "electron-builder": "^21.2.0",
+    "parcel-bundler": "^1.12.4",
+    "sass": "^1.23.0",
     "tslint": "^5.19.0",
     "typescript": "^3.6.4"
   }
