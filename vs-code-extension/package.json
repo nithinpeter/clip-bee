@@ -1,27 +1,29 @@
 {
-  "name": "copy-paste-plus",
-  "displayName": "Copy Paste Plus",
-  "description": "Clipboard/Copy-Paste History",
+  "name": "clip-bee",
+  "preview": true,
+  "displayName": "Clip Bee",
+  "description": "View and paste from clipboard history",
   "version": "0.0.1",
   "engines": {
-    "vscode": "^1.39.0"
+    "vscode": "^1.38.0"
   },
-  "repository": "https://github.com/nithiinpeter/copy-paste-plus",
+  "repository": "https://github.com/nithiinpeter/clip-bee",
   "author": {
     "name": "nithinpeter"
   },
   "categories": [
     "Other"
   ],
+  "publisher": "vespa-dev-works",
   "activationEvents": [
-    "onCommand:extension.showClipboard"
+    "onCommand:clipbee.showClipboardHistory"
   ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "extension.showClipboard",
-        "title": "Show clipboard"
+        "command": "clipbee.showClipboardHistory",
+        "title": "Show clipboard history"
       }
     ]
   },
@@ -35,7 +37,7 @@
     "@types/glob": "^7.1.1",
     "@types/node": "^10.12.21",
     "@types/node-fetch": "^2.5.2",
-    "@types/vscode": "^1.39.0",
+    "@types/vscode": "^1.38.0",
     "glob": "^7.1.4",
     "tslint": "^5.12.1",
     "typescript": "^3.3.1",

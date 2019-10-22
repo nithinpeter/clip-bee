@@ -3,13 +3,17 @@ import fetch from 'node-fetch';
 
 export function activate(context: vscode.ExtensionContext) {
   let disposable = vscode.commands.registerTextEditorCommand(
-    'extension.showClipboard',
+    'clipbee.showClipboardHistory',
     async () => {
-      const response = await fetch('http://localhost:4444');
-      const data: string[] = await response.json();
+      try {
+        const response = await fetch('http://127.0.0.1:5505/api/items');
+        const data: string[] = await response.json();
 
-      const selected = await vscode.window.showQuickPick(data);
-      await pasteSelected(selected || '');
+        const selected = await vscode.window.showQuickPick(data);
+        await pasteSelected(selected || '');
+      } catch {
+        vscode.window.showErrorMessage('ClipBee Mac app is not running!');
+      }
     }
   );
 
