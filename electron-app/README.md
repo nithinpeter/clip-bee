@@ -1,1 +1,3 @@
-# Copy Paste Plus Electron App
+# ClipBee 📋
+
+ClipBee is a Mac tray app which records your clipboard history 📋
