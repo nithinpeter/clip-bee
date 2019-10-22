@@ -47,7 +47,6 @@ const setContextMenu = (tray: Tray) => {
 
 const getContextMenu = () => {
   return Menu.buildFromTemplate([
-    { label: 'Preferences...' },
     {
       label: 'Open at login',
       type: 'checkbox',
@@ -59,7 +58,8 @@ const getContextMenu = () => {
 
     {
       label: 'View clipboard history',
-      click: () => shell.openExternal(`http://${SERVER_HOST}:${SERVER_PORT}`),
+      click: () =>
+        shell.openExternal(`http://${SERVER_HOST}:${SERVER_PORT}/index.html`),
     },
 
     { type: 'separator' },

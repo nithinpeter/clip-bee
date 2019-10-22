@@ -5,7 +5,7 @@
   "scripts": {
     "build:electron": "tsc",
     "build:ui": "parcel build ./src/app/ui/index.html --out-dir ./dist/app/ui",
-    "build": "yarn build:electron && yarn build:ui",
+    "build": "rm -rf dist && yarn build:electron && yarn build:ui",
     "watch:electron": "tsc -w",
     "watch:ui": "parcel watch ./src/app/ui/index.html --out-dir ./dist/app/ui",
     "start": "electron ./dist/main.js",
@@ -21,17 +21,15 @@
     "Clipboard history"
   ],
   "main": "./dist/main.js",
-  "files": [
-    "./dist/**/*"
-  ],
-  "productName": "Clip Bee",
+  "productName": "ClipBee",
   "build": {
     "appId": "com.vespadevworks.clipbee",
     "files": [
-      "./dist/**/*"
+      "./dist/**/*",
+      "./assets/**/*"
     ],
     "mac": {
-      "category": "utility  "
+      "category": "utility"
     }
   },
   "dependencies": {

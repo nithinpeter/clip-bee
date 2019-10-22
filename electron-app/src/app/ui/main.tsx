@@ -61,21 +61,20 @@ export class App extends React.Component<{}, State> {
       <div className="container">
         <div className="header">
           <img src={logo} />
-          <h1>Clip Bee</h1>
+          <h1 className="header__logo">ClipBee</h1>
         </div>
 
         <ul className="list">
           {this.state.items.map((item, index) => {
             return (
-              <li
-                key={index}
-                className="list__item"
-                onClick={() => this.copyToClipboard(item)}
-              >
+              <li key={index} className="list__item">
                 <pre className="list__item__text">{item}</pre>
                 <div className="list__item__actions">
                   <button onClick={e => this.handleDelete(e, index)}>
                     delete
+                  </button>
+                  <button onClick={() => this.copyToClipboard(item)}>
+                    copy
                   </button>
                 </div>
               </li>
