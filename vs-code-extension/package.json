@@ -1,20 +1,36 @@
 {
   "name": "clip-bee",
   "preview": true,
-  "displayName": "Clip Bee",
+  "displayName": "ClipBee",
   "description": "View and paste from clipboard history",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.38.0"
   },
-  "repository": "https://github.com/nithiinpeter/clip-bee",
+  "repository": {
+    "url": "https://github.com/nithiinpeter/clip-bee",
+    "type": "git",
+    "directory": "vs-code-extension"
+  },
   "author": {
     "name": "nithinpeter"
   },
+  "keywords": [
+    "clipboard",
+    "clipboard history",
+    "copy paste",
+    "copy paste history",
+    "clipbee"
+  ],
   "categories": [
     "Other"
   ],
   "publisher": "vespa-dev-works",
+  "galleryBanner": {
+    "theme": "dark",
+    "color": "#000000"
+  },
+  "icon": "assets/logo.png",
   "activationEvents": [
     "onCommand:clipbee.showClipboardHistory"
   ],
