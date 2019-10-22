@@ -11,3 +11,5 @@ Unlike other clipboard history extensions, which will only show the clipboard hi
 - Make sure the ClipBee desktop app is installed and running.
 - Press `CMD/CTRL+Shift+P`in VS Code to open the command palette and search for "Show clipboard hisotry".
 - Select "Show clipboard hisotry", and you will see a list items in your clipboard history.
+
+![ClipBee VS Code extension](https://user-images.githubusercontent.com/10738296/67284467-5cbb1080-f521-11e9-80b5-710f4daba08e.gif)
