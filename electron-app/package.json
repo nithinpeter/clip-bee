@@ -10,7 +10,7 @@
     "watch:ui": "parcel watch ./src/app/ui/index.html --out-dir ./dist/app/ui",
     "start": "electron ./dist/main.js",
     "pack": "electron-builder --dir --mac dmg",
-    "dist": "electron-builder --mac dmg",
+    "dist": "electron-builder --mac dmg --publish onTag",
     "postinstall": "electron-builder install-app-deps"
   },
   "repository": "https://github.com/nithiinpeter/copy-paste-plus",
@@ -29,7 +29,10 @@
       "./assets/**/*"
     ],
     "mac": {
-      "category": "utility"
+      "category": "utility",
+      "publish": [
+        "github"
+      ]
     }
   },
   "dependencies": {
