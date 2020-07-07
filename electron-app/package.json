@@ -48,7 +48,7 @@
     "@types/hapi__inert": "^5.2.0",
     "@types/react": "^16.9.9",
     "@types/react-dom": "^16.9.2",
-    "electron": "^6.0.8",
+    "electron": "^7.2.4",
     "electron-builder": "^21.2.0",
     "parcel-bundler": "^1.12.4",
     "sass": "^1.23.0",
