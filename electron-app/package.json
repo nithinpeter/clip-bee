@@ -36,7 +36,7 @@
     }
   },
   "dependencies": {
-    "@hapi/hapi": "^18.4.0",
+    "@hapi/hapi": "^19.1.1",
     "@hapi/inert": "^5.2.2",
     "babel-polyfill": "^6.26.0",
     "clipboardy": "^2.1.0",
